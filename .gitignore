@@ -1,0 +1,7 @@
+/.idea/
+/*.jar/
+/packages/
+/autoOffice/bin/
+/autoOffice/obj/
+/autoOffice.Tests/bin/
+/autoOffice.Tests/obj/
