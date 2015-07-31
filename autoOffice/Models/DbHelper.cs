@@ -11,6 +11,7 @@ namespace autoOffice.Models
             Database.SetInitializer<DbHelper>(new MigrateDatabaseToLatestVersion<DbHelper, ReportingDbMigrationsConfiguration>());
         }
         public DbSet<Leave> Leaves { get; set; }
+        public DbSet<Employee> Employees { get; set; }
     }
     internal sealed class ReportingDbMigrationsConfiguration : DbMigrationsConfiguration<DbHelper>
     {
