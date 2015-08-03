@@ -1,5 +1,11 @@
 ﻿@model autoOffice.Models.Leave
 
+
+<script>
+    $(document).ready(function(){
+        $("#datepicker").datepicker();
+    })
+</script>
 @{
     ViewBag.Title = "Create";
 }
@@ -24,10 +30,11 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.FromDate)
         </div>
-        <div class="editor-field">
+        @*<div class="editor-field">
             @Html.EditorFor(model => model.FromDate)
             @Html.ValidationMessageFor(model => model.FromDate)
-        </div>
+        </div>*@
+        <input type="text" id="datepicker" />
 
         <div class="editor-label">
             @Html.LabelFor(model => model.EmployId)
