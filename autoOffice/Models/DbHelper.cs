@@ -13,7 +13,7 @@ namespace autoOffice.Models
         public DbSet<Leave> Leaves { get; set; }
         public DbSet<Employee> Employees { get; set; }
     }
-    internal sealed class ReportingDbMigrationsConfiguration : DbMigrationsConfiguration<DbHelper>
+    public sealed class ReportingDbMigrationsConfiguration : DbMigrationsConfiguration<DbHelper>
     {
         public ReportingDbMigrationsConfiguration()
         {

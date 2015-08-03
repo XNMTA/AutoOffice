@@ -1,0 +1,43 @@
+﻿@model autoOffice.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Employee</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MailAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MailAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Department)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ReportTo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReportTo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
