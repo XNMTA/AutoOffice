@@ -39,6 +39,12 @@ namespace autoOffice.Controllers
 
         public ActionResult Create()
         {
+            db.Employees.Load();
+            List<SelectListItem> items = new List<SelectListItem>();
+            foreach(var item in db.Employees.Local){
+                items.Add(new SelectListItem { Value = item.ID.ToString(), Text = item.MailAddress });
+            }
+            ViewData["approver"] = items;
             return View();
         }
 
