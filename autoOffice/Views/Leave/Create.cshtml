@@ -1,0 +1,68 @@
+﻿@model autoOffice.Models.Leave
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Leave</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Hours)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Hours)
+            @Html.ValidationMessageFor(model => model.Hours)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FromDate)
+            @Html.ValidationMessageFor(model => model.FromDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmployId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmployId)
+            @Html.ValidationMessageFor(model => model.EmployId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Comments)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Comments)
+            @Html.ValidationMessageFor(model => model.Comments)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Approver)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Approver)
+            @Html.ValidationMessageFor(model => model.Approver)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
