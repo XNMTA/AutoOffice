@@ -32,7 +32,9 @@ namespace autoOffice.Controllers
             ViewBag.hasAccess = db.Accesses.Local.Count
                 ((Access acc) => acc.AccessType == AccessType.UserAdmin 
                     && acc.UserName==CommonUser.pureName(User.Identity.Name))>0;
-            return View(db.Employees.ToList());
+            var sortList=db.Employees.ToList();
+                sortList.Sort(new Comparison<Employee>((b, c) => string.Compare(b.Name , c.Name)));
+            return View(sortList);
         }
         //
         // GET: /Employee/Details/5
