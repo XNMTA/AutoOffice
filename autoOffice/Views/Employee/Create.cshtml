@@ -37,19 +37,24 @@
             @Html.ValidationMessageFor(model => model.Department)
         </div>
 
-        <div class="editor-label">
+        @*<div class="editor-label">
             @Html.LabelFor(model => model.LeaveReportTo)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.LeaveReportTo)
             @Html.ValidationMessageFor(model => model.LeaveReportTo)
-        </div>
+        </div>*@
 
-        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LeaveReportTo)
+        </div>
+        <div style="width:200px">
+            @Html.ListBoxFor(model => model.LeaveReportTo, (SelectList)ViewBag.LeaveReportTo, new {style = "width: 200px;" })
+        </div>
         <p>
             <input type="submit" value="Create" />
         </p>
-    </fieldset>
+</fieldset>
 }
 
 <div>

@@ -44,6 +44,7 @@ namespace autoOffice.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.LeaveReportTo = db.Employees.Where((Employee e) => e.ID == employee.LeaveReportTo).First();
             return View(employee);
         }
 
@@ -52,6 +53,9 @@ namespace autoOffice.Controllers
 
         public ActionResult Create()
         {
+
+            db.Employees.Load();
+            ViewBag.LeaveReportTo = new SelectList(db.Employees.Local, "ID", "Name");
             return View();
         }
 
@@ -83,6 +87,9 @@ namespace autoOffice.Controllers
             {
                 return HttpNotFound();
             }
+            db.Employees.Load();
+            ViewBag.LeaveReportToShow = new SelectList(db.Employees.Local, "ID", "Name");
+            //(ViewBag.LeaveReportToShow as SelectList).First().Selected = true;
             return View(employee);
         }
 
