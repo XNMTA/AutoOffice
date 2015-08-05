@@ -118,6 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonTests\CommonUserTests.cs" />
     <Compile Include="ConnectionTests\MsSqlConnectionTests.cs" />
     <Compile Include="ConnectionTests\MySqlConnectionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

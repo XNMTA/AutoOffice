@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using autoOffice.Models;
+using autoOffice.Common;
 
 namespace autoOffice.Controllers
 {
@@ -20,9 +21,19 @@ namespace autoOffice.Controllers
         public ActionResult Index()
         {
             //return View(db.Employees.ToList());
+            db.Employees.Load();
+            db.Accesses.Load();
+            var eList = db.Employees.Local;
+            foreach (Employee e in eList)
+            {
+                //var name = e.Name;
+                e.LeaveReportName = eList.FirstOrDefault((Employee eone) => eone.ID == e.LeaveReportTo).Name;
+            }
+            ViewBag.hasAccess = db.Accesses.Local.Count
+                ((Access acc) => acc.AccessType == AccessType.UserAdmin 
+                    && acc.UserName==CommonUser.pureName(User.Identity.Name))>0;
             return View(db.Employees.ToList());
         }
-
         //
         // GET: /Employee/Details/5
 
