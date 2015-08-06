@@ -8,7 +8,7 @@ namespace autoOffice.Tests.ConnectionTests
     public class MsSqlConnectionTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void EntityFrameworkTest()
         {
             DbHelper helper = new DbHelper();
             Leave l = new Leave();

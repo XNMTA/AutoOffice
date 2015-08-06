@@ -144,6 +144,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\CommonDepartment.cs" />
     <Compile Include="Common\CommonUser.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -231,7 +232,6 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Sql\schema.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -275,6 +275,9 @@
     <Content Include="Views\Leave\Create.cshtml" />
     <Content Include="Views\Leave\Edit.cshtml" />
     <Content Include="Views\Leave\Delete.cshtml" />
+    <Content Include="SqlMeta\employee-meta.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

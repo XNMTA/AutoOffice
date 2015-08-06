@@ -120,7 +120,7 @@
   <ItemGroup>
     <Compile Include="CommonTests\CommonUserTests.cs" />
     <Compile Include="ConnectionTests\MsSqlConnectionTests.cs" />
-    <Compile Include="ConnectionTests\MySqlConnectionTests.cs" />
+    <Compile Include="DataInsertTools\InsertDataFromTxt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

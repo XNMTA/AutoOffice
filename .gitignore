@@ -3,5 +3,7 @@
 /packages/
 /autoOffice/bin/
 /autoOffice/obj/
+/autoAdmin/bin/
+/autoAdmin/obj/
 /autoOffice.Tests/bin/
 /autoOffice.Tests/obj/
