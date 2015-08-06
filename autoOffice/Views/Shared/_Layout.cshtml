@@ -10,7 +10,11 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
+       
+        <script src="@Url.Content("~/bower_components/metisMenu/dist/metisMenu.min.js")"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="@Url.Content("~/Scripts/sb-admin-2.js")"></script>
+        <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>
         <link href="@Url.Content("~/bower_components/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
     </head>
     <body>
@@ -36,17 +40,16 @@
             </div>
         </header>
         
-        <div id="body">
+        <div id="body" style="margin-left:auto;margin-right:auto">
             @RenderSection("featured", required: false)
             <section class=" main-content clear-fix">
+                <div style="float:left;margin-right:30px">
+                    @Html.Action("Index", "Navbar")
+                </div>
                 <div style="float:left">
                     @RenderBody()
                 </div>
-                <div style="float:left">
-                    @Html.Action("Index", "Navbar")
-                </div>
-</section>
-           
+            </section>
         </div>
         
         <footer>
