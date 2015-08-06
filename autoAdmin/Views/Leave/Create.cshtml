@@ -1,0 +1,77 @@
+﻿@model autoOffice.Models.Leave
+
+
+<script>
+    $(document).ready(function(){
+        $("#FromDate").datepicker();
+        $(document).ready(function () {
+            $('#Hours').addClass('form-control');
+            $('#FromDate').addClass('form-control');
+            $('#EmployId').addClass('form-control');
+            $('#Comments').addClass('form-control');
+        });
+    })
+</script>
+
+@{
+    ViewBag.Title = "Forms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Create Leave</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                create new leave form
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <fieldset>
+                                <div class="form-group">
+                                    <label>Hours</label>
+                                    @Html.EditorFor(model => model.Hours)
+                                    @Html.ValidationMessageFor(model => model.Hours)
+                                </div>
+                                <div class="form-group">
+                                    <label>From Date</label>
+                                    <input type="text" id="FromDate" name="FromDate" data-valmsg-for="FromDate" data-val="true" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Comments</label>
+                                    @Html.EditorFor(model => model.Comments)
+                                    @Html.ValidationMessageFor(model => model.Comments)
+                                </div>
+                                
+                                <p>
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </p>
+                            </fieldset>
+                        }
+                    </div>
+                </div>
+                <!-- /.row (nested) -->
+            </div>
+            <!-- /.panel-body -->
+            <div class="panel-footer">
+                <p>
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->

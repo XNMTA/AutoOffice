@@ -11,6 +11,10 @@ namespace sb_admin_2.Web1.Domain
         public IEnumerable<Navbar> navbarItems()
         {
             var menu = new List<Navbar>();
+            menu.Add(new Navbar { Id = 19, nameOption = "Employee", controller = "Employee", action = "Index", imageClass = "fa fa-users fa-fw", status = true, isParent = false, parentId = 0 });
+            menu.Add(new Navbar { Id = 20, nameOption = "Leave", controller = "Leave", action = "Index", imageClass = "fa fa-truck fa-fw", status = true, isParent = false, parentId = 0 });
+            menu.Add(new Navbar { Id = 21, nameOption = "Sample", imageClass = "fa fa-truck fa-fw", status = true, isParent = true, parentId = 0 });
+            
             menu.Add(new Navbar { Id = 1, nameOption = "Dashboard", controller = "Home", action = "Index", imageClass = "fa fa-dashboard fa-fw", status = true, isParent = false, parentId = 0 });
             menu.Add(new Navbar { Id = 2, nameOption = "Charts", imageClass = "fa fa-bar-chart-o fa-fw", status = true, isParent = true, parentId = 0 });
             menu.Add(new Navbar { Id = 3, nameOption = "Flot Charts", controller = "Home", action = "FlotCharts", status = true, isParent = false, parentId = 2 });
