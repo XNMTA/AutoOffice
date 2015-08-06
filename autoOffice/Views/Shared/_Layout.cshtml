@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+        <link href="@Url.Content("~/bower_components/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <header>
@@ -34,12 +35,20 @@
                 </div>
             </div>
         </header>
+        
         <div id="body">
             @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
+            <section class=" main-content clear-fix">
+                <div style="float:left">
+                    @RenderBody()
+                </div>
+                <div style="float:left">
+                    @Html.Action("Index", "Navbar")
+                </div>
+</section>
+           
         </div>
+        
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">

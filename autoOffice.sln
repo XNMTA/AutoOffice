@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "autoOffice", "autoOffice\au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "autoOffice.Tests", "autoOffice.Tests\autoOffice.Tests.csproj", "{AB98B5B1-EB2D-4DAE-A2BE-51C9DF3BF9C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "autoAdmin", "sb-admin-2.Web1\autoAdmin.csproj", "{CEE973D5-3804-40BF-89DC-F3E48DA3FFFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "autoAdmin", "autoAdmin\autoAdmin.csproj", "{CEE973D5-3804-40BF-89DC-F3E48DA3FFFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

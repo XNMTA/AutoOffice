@@ -6,7 +6,8 @@
 
 <h2>Index</h2>
 @{if(ViewBag.hasAccess==false){
-  <p>Only admin user can list all employee, Access deny</p>
+  <p>Only 
+     user can list all employee, Access deny</p>
   }else{
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -31,6 +32,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            <p class="fa fa-user" style="height:5px"/>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
