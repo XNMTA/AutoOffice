@@ -572,6 +572,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\approve\Pending-status.gif" />
+    <Content Include="Images\approve\Approved-status.gif" />
+    <Content Include="Images\approve\Reject-status.gif" />
     <Content Include="Images\rc\rc.png" />
     <Content Include="Images\rc\rcs.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -932,6 +935,8 @@
     <Content Include="Views\Leave\Details.cshtml" />
     <Content Include="Views\Leave\Edit.cshtml" />
     <Content Include="Views\Leave\Index.cshtml" />
+    <Content Include="Views\Leave\TeamWaitingList.cshtml" />
+    <Content Include="Views\Leave\MyWaitingList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

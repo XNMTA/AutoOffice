@@ -12,8 +12,11 @@ namespace sb_admin_2.Web1.Domain
         {
             var menu = new List<Navbar>();
             menu.Add(new Navbar { Id = 19, nameOption = "Employee", controller = "Employee", action = "Index", imageClass = "fa fa-users fa-fw", status = true, isParent = false, parentId = 0 });
-            menu.Add(new Navbar { Id = 20, nameOption = "Leave", controller = "Leave", action = "Index", imageClass = "fa fa-truck fa-fw", status = true, isParent = false, parentId = 0 });
-            //menu.Add(new Navbar { Id = 21, nameOption = "Sample", imageClass = "fa fa-truck fa-fw", status = true, isParent = true, parentId = 0 });
+            menu.Add(new Navbar { Id = 20, nameOption = "Apply-Leave", controller = "Leave", action = "Index", imageClass = "fa fa-pencil fa-fw", status = false, isParent = false, parentId = 21 });
+            menu.Add(new Navbar { Id = 21, nameOption = "Leave", imageClass = "fa fa-truck fa-fw", status = true, isParent = true, parentId = 0 });
+            menu.Add(new Navbar { Id = 22, nameOption = "Waiting-My-Approve", controller = "Leave", action = "TeamWaitingList", imageClass = "fa fa-pencil fa-fw", status = false, isParent = false, parentId = 21 });
+            menu.Add(new Navbar { Id = 23, nameOption = "My-Leave", controller = "Leave", action = "MyWaitingList", imageClass = "fa fa-pencil fa-fw", status = false, isParent = false, parentId = 21 });
+            
             
             //menu.Add(new Navbar { Id = 1, nameOption = "Dashboard", controller = "Home", action = "Index", imageClass = "fa fa-dashboard fa-fw", status = true, isParent = false, parentId = 0 });
             //menu.Add(new Navbar { Id = 2, nameOption = "Charts", imageClass = "fa fa-bar-chart-o fa-fw", status = true, isParent = true, parentId = 0 });

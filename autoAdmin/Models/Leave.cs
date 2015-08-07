@@ -8,7 +8,7 @@ namespace autoOffice.Models
     public enum LeaveApproveStatus{
         Approved=1,
         Reject=2,
-        Pending=3
+        Pending=0
     }
     [Table("rc_Leaves", Schema = "dbo")]
     public class Leave

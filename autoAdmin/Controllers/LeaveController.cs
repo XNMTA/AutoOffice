@@ -131,5 +131,42 @@ namespace autoOffice.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+        public ActionResult TeamWaitingList()
+        {
+            String userName=CommonUser.pureName(User.Identity.Name);
+            return View(db.Leaves.Where(l => l.Approver==userName).ToList());
+        }
+
+        public ActionResult MyWaitingList()
+        {
+            String userName = CommonUser.pureName(User.Identity.Name);
+            Employee user = CommonUser.findEmployeeByName(userName, db);
+            return View(db.Leaves.Where(l => l.EmployId == user.ID).ToList());
+        }
+
+        public ActionResult Approve(Leave leave)
+        {
+            if (ModelState.IsValid)
+            {
+                var leaveOne=db.Leaves.Find(leave.ID);
+                leaveOne.status = LeaveApproveStatus.Approved;
+                db.SaveChanges();
+                return RedirectToAction("TeamWaitingList");
+            }
+            return View(leave);
+        }
+
+        public ActionResult Reject(Leave leave)
+        {
+            if (ModelState.IsValid)
+            {
+                var leaveOne = db.Leaves.Find(leave.ID);
+                leaveOne.status = LeaveApproveStatus.Reject;
+                db.SaveChanges();
+                return RedirectToAction("TeamWaitingList");
+            }
+            return View(leave);
+        }
     }
 }
