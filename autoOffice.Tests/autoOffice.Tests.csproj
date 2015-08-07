@@ -131,9 +131,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\autoOffice\autoOffice.csproj">
-      <Project>{B49DAB92-F805-410C-A484-F034E99DE9CC}</Project>
-      <Name>autoOffice</Name>
+    <ProjectReference Include="..\autoAdmin\autoAdmin.csproj">
+      <Project>{cee973d5-3804-40bf-89dc-f3e48da3fffc}</Project>
+      <Name>autoAdmin</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

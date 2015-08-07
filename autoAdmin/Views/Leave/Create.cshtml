@@ -1,9 +1,11 @@
 ﻿@model autoOffice.Models.Leave
 
-
+<script src="@Url.Content("~/bower_components/datetimepicker/jquery-ui-timepicker-addon.js")"></script>
+<link href="@Url.Content("~/bower_components/datetimepicker/jquery-ui-timepicker-addon.css")" rel="stylesheet" type="text/css" />
 <script>
     $(document).ready(function(){
-        $("#FromDate").datepicker();
+        $("#FromDate").datetimepicker();
+        //$("#ToDate").datetimepicker();
         $(document).ready(function () {
             $('#Hours').addClass('form-control');
             $('#FromDate').addClass('form-control');

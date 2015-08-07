@@ -9,7 +9,7 @@ namespace sb_admin_2.Web1.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(autoOffice.Models.DbHelper context)
