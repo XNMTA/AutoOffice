@@ -2,7 +2,24 @@
 <script type="text/javascript">
 $(document).ready(function () {
     $('#LeaveReportTo').addClass('form-control');
+    $("#Name").blur(function () {
+        var userName = $("#Name").val()
+        $.post("doesUserExist", { userName: userName }, function (result) {
+            if (result) {
+                $("#validNameCheckMessageSpan").css('color', 'red');
+                $("#validNameCheckMessageSpan").text("User already exist");
+                $("#btnCreateuserSubmit").attr('disabled', 'disabled');
+            }
+            else {
+                $("#validNameCheckMessageSpan").css('color', 'green');
+                $("#validNameCheckMessageSpan").text("No existing user, good for new regiest");
+                $("#btnCreateuserSubmit").removeAttr('disabled');
+            }
+        });
+        
+    });
 });
+
 </script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -36,6 +53,7 @@ $(document).ready(function () {
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input class="text-box single-line form-control" id="Name" name="Name" type="text" value="">
+                                    <span id="validNameCheckMessageSpan"></span>
                                     @Html.ValidationMessageFor(model => model.Name)
                                 </div>
                                 <div class="form-group">
@@ -53,7 +71,7 @@ $(document).ready(function () {
                                     @Html.ListBoxFor(model => model.LeaveReportTo, (SelectList)ViewBag.LeaveReportTo, new { style = "width: 200px;" })
                                 </div>
                                 <p>
-                                    <input type="submit" value="Create" class="btn btn-default" />
+                                    <input id="btnCreateuserSubmit" type="submit" value="Create" class="btn btn-default" />
                                 </p>
                                 </fieldset>
                     }

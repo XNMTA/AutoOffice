@@ -142,5 +142,12 @@ namespace autoOffice.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+        [HttpPost]
+        public JsonResult doesUserExist(string userName)
+        {
+            var user = db.Employees.Where(e => e.Name == userName).ToList();
+            return Json(user.Count > 0);
+        }
     }
 }
