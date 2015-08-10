@@ -13,6 +13,11 @@ namespace sb_admin_2.Web1.Controllers
             var a=User.Identity.Name;
             return View();
         }
+        public ActionResult DashBoard()
+        {
+            var a = User.Identity.Name;
+            return View("DashBoard");
+        }
 
         public ActionResult FlotCharts()
         {

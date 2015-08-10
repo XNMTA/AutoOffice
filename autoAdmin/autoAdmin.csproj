@@ -937,6 +937,7 @@
     <Content Include="Views\Leave\Index.cshtml" />
     <Content Include="Views\Leave\TeamWaitingList.cshtml" />
     <Content Include="Views\Leave\MyWaitingList.cshtml" />
+    <Content Include="Views\Home\DashBoard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
