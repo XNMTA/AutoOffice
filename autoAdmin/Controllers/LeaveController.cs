@@ -60,7 +60,7 @@ namespace autoOffice.Controllers
                 leave.ID = Guid.NewGuid();
                 leave.EmployName = CommonUser.pureName(User.Identity.Name);
                 Employee emp=CommonUser.findEmployeeByName(leave.EmployName,db);
-                Employee leader = CommonUser.findEmployeeById(emp.LeaveReportTo, db);
+                Employee leader = CommonUser.findEmployeeByName(emp.LeaveReportTo, db);
                 leave.EmployId = emp.ID;
                 leave.Approver = leader.Name;
                 db.Leaves.Add(leave);
@@ -142,7 +142,10 @@ namespace autoOffice.Controllers
         {
             String userName = CommonUser.pureName(User.Identity.Name);
             Employee user = CommonUser.findEmployeeByName(userName, db);
-            return View(db.Leaves.Where(l => l.EmployId == user.ID).ToList());
+            if (user != null)
+                return View(db.Leaves.Where(l => l.EmployId == user.ID).ToList());
+            else
+                return View(db.Leaves.Where(l => l.EmployId == Guid.Empty).ToList());
         }
 
         public ActionResult Approve(Leave leave)

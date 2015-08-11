@@ -24,11 +24,11 @@ namespace autoOffice.Controllers
             db.Employees.Load();
             db.Accesses.Load();
             var eList = db.Employees.Local;
-            foreach (Employee e in eList)
-            {
-                //var name = e.Name;
-                e.LeaveReportName = eList.FirstOrDefault((Employee eone) => eone.ID == e.LeaveReportTo).Name;
-            }
+            //foreach (Employee e in eList)
+            //{
+            //    //var name = e.Name;
+            //    e.LeaveReportName = eList.FirstOrDefault((Employee eone) => eone.ID == e.LeaveReportTo).Name;
+            //}
             ViewBag.hasAccess = db.Accesses.Local.Count
                 ((Access acc) => acc.AccessType == AccessType.UserAdmin 
                     && acc.UserName==CommonUser.pureName(User.Identity.Name))>0;
@@ -46,7 +46,7 @@ namespace autoOffice.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.LeaveReportTo = db.Employees.Where((Employee e) => e.ID == employee.LeaveReportTo).First();
+            ViewBag.LeaveReportTo = db.Employees.Where((Employee e) => e.Name == employee.LeaveReportTo).First();
             return View(employee);
         }
 

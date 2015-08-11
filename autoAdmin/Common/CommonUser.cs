@@ -13,6 +13,9 @@ namespace autoOffice.Common
             int index = longName.IndexOf("\\");
             return longName.Substring(index+1);
         }
+        public static string pureMailName(string mailName) {
+            return mailName.Split('@')[0];
+        }
         public static Employee findEmployeeByMail(String mail, DbHelper helper)
         {
             var query = from e in helper.Employees

@@ -20,7 +20,6 @@ namespace autoOffice.Models
         [DisplayName("Dep")]
         public String Department { get; set; }
         [DisplayName("Report-to")]
-        public Guid LeaveReportTo { get; set; }
-        public String LeaveReportName { get; set; }
+        public String LeaveReportTo { get; set; }
     }
 }

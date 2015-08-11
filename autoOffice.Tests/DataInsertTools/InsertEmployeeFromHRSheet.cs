@@ -1,20 +1,22 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using autoOffice.Common;
 using autoOffice.Models;
-using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace autoOffice.Tests.DataInsertTools
 {
-    [TestClass]
-    public class InsertDataFromTxt
+    class InsertEmployeeFromHRSheet
     {
-        String sqlmetaAddress = @"E:\Code\autoOffice\autoOffice\bin\SqlMeta\employee-meta.csv";
+        string sqlmetaAddress = @"E:\Code\autoOffice\autoOffice.Tests\DataInsertTools\employee-meta.csv";
         DbHelper helper = new DbHelper();
         [TestMethod]
-        public void InserDataFromTxtTest()
-        {
+        public void InserDataFromHRSheetTest()
+        { 
             FileInfo fi = new FileInfo(sqlmetaAddress);
             FileStream fs = new FileStream(sqlmetaAddress, System.IO.FileMode.Open, System.IO.FileAccess.Read);
             StreamReader sr = new StreamReader(fs, Encoding.Default);
@@ -24,7 +26,10 @@ namespace autoOffice.Tests.DataInsertTools
                 String employeeMail = meta[0];
                 String leaderMail = meta[2];
                 String department = meta[1];
-                if (findEmployeeByMail(employeeMail) != null) {
+                String startDate = meta[3];
+
+                if (findEmployeeByMail(employeeMail) != null)
+                {
                     continue;
                 }
                 Employee emp = helper.Employees.Create();
@@ -32,27 +37,13 @@ namespace autoOffice.Tests.DataInsertTools
                 emp.ID = Guid.NewGuid();
                 emp.Department = department;
                 emp.MailAddress = employeeMail;
-                //var reportTo = findEmployeeByMail(leaderMail);
-                //emp.LeaveReportTo = reportTo.ID;
+
+                emp.LeaveReportTo = leaderMail.Split('@')[0];
                 helper.Employees.Add(emp);
                 helper.SaveChanges();
-                
-            }
-            //Employee emp = new Employee();
-            //emp.Name = "lee.may";
-            //emp.ID = Guid.NewGuid();
-            //emp.Department = "TA";
-            //var query = from e in helper.Employees
-            //    where e.Name == "bob.zhu"
-            //    select e;
-            //var reportTo = query.FirstOrDefault();
-            //emp.LeaveReportTo = reportTo.ID;
-            //emp.MailAddress = emp.Name + "@ringcentral.com";
-            //helper.Employees.Add(emp);
-            //helper.SaveChanges();
-            
-        }
 
+            }
+        }
         private Employee findEmployeeByMail(String leaderMail)
         {
             var query = from e in helper.Employees
