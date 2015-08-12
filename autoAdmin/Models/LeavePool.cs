@@ -12,7 +12,7 @@ namespace autoOffice.Models
         public Guid ID { get; set; }
         public double Hours { get; set; }
         [MaxLength(50)]
-        public String EmployName { get; set; }
+        public String EmployeeName { get; set; }
         public DateTime EntryDate { get; set; }
     }
 }

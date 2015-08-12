@@ -13,6 +13,7 @@ namespace autoOffice.Models
         public DbSet<Leave> Leaves { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Access> Accesses { get; set; }
+        public DbSet<LeavePool> LeavePools { get; set; }
     }
     public sealed class ReportingDbMigrationsConfiguration : DbMigrationsConfiguration<DbHelper>
     {
