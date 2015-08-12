@@ -21,5 +21,6 @@ namespace autoOffice.Models
         public String Department { get; set; }
         [DisplayName("Report-to")]
         public String LeaveReportTo { get; set; }
+        public DateTime StartDate { get; set; }
     }
 }

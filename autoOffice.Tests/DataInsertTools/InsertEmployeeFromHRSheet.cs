@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace autoOffice.Tests.DataInsertTools
 {
-    class InsertEmployeeFromHRSheet
+    [TestClass]
+    public class InsertEmployeeFromHRSheet
     {
         string sqlmetaAddress = @"E:\Code\autoOffice\autoOffice.Tests\DataInsertTools\employee-meta.csv";
         DbHelper helper = new DbHelper();
@@ -37,6 +38,7 @@ namespace autoOffice.Tests.DataInsertTools
                 emp.ID = Guid.NewGuid();
                 emp.Department = department;
                 emp.MailAddress = employeeMail;
+                emp.StartDate = DateTime.Parse(startDate);
 
                 emp.LeaveReportTo = leaderMail.Split('@')[0];
                 helper.Employees.Add(emp);
@@ -44,10 +46,10 @@ namespace autoOffice.Tests.DataInsertTools
 
             }
         }
-        private Employee findEmployeeByMail(String leaderMail)
+        private Employee findEmployeeByMail(String employeeMail)
         {
             var query = from e in helper.Employees
-                        where e.MailAddress == leaderMail
+                        where e.MailAddress == employeeMail
                         select e;
             var reportTo = query.FirstOrDefault();
             return reportTo;
