@@ -4,6 +4,24 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+    function showRejectDiag(id) {
+        $("#dialog").dialog({
+            modal: true,
+            buttons: {
+                submit: function () {
+                    comments = $("#dialog").find("textarea").first().val()
+                    debugger
+                    alert(comment)
+                    alert(id)
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+        $("#dialog").find("textarea").first().val("")
+    }
+</script>
+
 
 <div class="row">
     <div class="col-lg-12">
@@ -82,8 +100,11 @@
                                         @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                                         @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                                         @Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
-                                        @Html.ActionLink("Approve", "Approve", new { id = item.ID }) |
-                                        @Html.ActionLink("Reject", "Reject", new { id = item.ID })
+                                        @Html.ActionLink("Reject", "Reject", new { id = item.ID })<br/>
+                                        <a href="/autoAdmin/Leave/Approve/@item.ID">
+                                            <button type="button" class="btn btn-outline btn-success btn-xs">Approve</button>
+                                        </a>
+                                        <button type="button" class="btn btn-outline btn-danger btn-xs" onclick="showRejectDiag('@item.ID')">Reject</button>
                                     </td>
                                 </tr>
                             }
@@ -99,4 +120,6 @@
     <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
-
+<div id="dialog" title="reject" style="display:none">
+    <span>comments:</span><br/><textarea id="comment" style="width:100%"></textarea>
+</div>
