@@ -5,20 +5,42 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script>
+    $(document).ready(function () {
+        $(".hidden-status").each(function () {
+            //debugger
+            if ($(this).text() != "Pending") {
+                $(this.parentElement).find("#operation-approve").css("display", "none");
+                $(this.parentElement).find("#operation-reject").css("display", "none");
+                $(this.parentElement).find("#operation-finished").css("display", "block")
+            }
+        });
+    });
+    //function finish(id) {
+    //    var str = "#" + id;
+    //    $(str).css('display','block');
+    //}
     function showRejectDiag(id) {
         $("#dialog").dialog({
             modal: true,
             buttons: {
                 submit: function () {
-                    comments = $("#dialog").find("textarea").first().val()
-                    debugger
-                    alert(comment)
-                    alert(id)
-                    $( this ).dialog( "close" );
+                    var comments = $("#dialog").find("textarea").first().val()
+                    //debugger
+                    //alert(comment)
+                    //alert(id)
+                    var url = "/autoAdmin/Leave/Reject?id="+id+"&comment="+comments;
+                    $.post(url, function (result) {
+                        window.location.reload();
+                    });
+                    $(this).dialog("close");
+                    //finish(id);
                 }
             }
         });
-        $("#dialog").find("textarea").first().val("")
+        $("#dialog").find("textarea").first().val("");
+    }
+    function approve(id) {
+        //finish(id);
     }
 </script>
 
@@ -53,7 +75,7 @@
                                 <th>
                                     Applicant 
                                 </th>
-                                <th>
+                                <th style="width:300px">
                                     @Html.DisplayNameFor(model => model.Comments)
                                 </th>
                                 <th>
@@ -98,13 +120,15 @@
                                     </td>*@
                                     <td>
                                         @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
-                                        @Html.ActionLink("Reject", "Reject", new { id = item.ID })<br/>
+                                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                            @Html.ActionLink("Reject", "Reject", new { id = item.ID })<br/>*@
+                                        <button id="operation-finished" type="button" style="display:none" class="btn btn-outline btn-warning btn-xs">Finished</button>
                                         <a href="/autoAdmin/Leave/Approve/@item.ID">
-                                            <button type="button" class="btn btn-outline btn-success btn-xs">Approve</button>
+                                            <button id="operation-approve" type="button" class="btn btn-outline btn-success btn-xs" onclick="approve('@item.ID')">Approve</button>
                                         </a>
-                                        <button type="button" class="btn btn-outline btn-danger btn-xs" onclick="showRejectDiag('@item.ID')">Reject</button>
+                                        <button id="operation-reject" type="button" class="btn btn-outline btn-danger btn-xs" onclick="showRejectDiag('@item.ID')">Reject</button>
+                                        <div class="hidden-status" style="display:none">@item.status</div>
                                     </td>
                                 </tr>
                             }

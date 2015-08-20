@@ -12,8 +12,8 @@
         @Html.ActionLink(" ", "Index", new { controller = "Home" }, new { style="background: url(" + Url.Content("~/Images/rc/rcs.png") + ") no-repeat center right; display:block; height:50px; width:200px;" })
     </div>
     <!-- /.navbar-header -->
-    <ul class="nav navbar-top-links navbar-right">
-        <li class="dropdown">
+    <ul class="nav navbar-top-links navbar-right" >
+        <li class="dropdown" style="display:none">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
@@ -64,7 +64,7 @@
             <!-- /.dropdown-messages -->
         </li>
         <!-- /.dropdown -->
-        <li class="dropdown">
+        <li class="dropdown" style="display:none">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
@@ -151,7 +151,7 @@
                 <li>
                     <a href="#">
                         <div>
-                            <i class="fa fa-comment fa-fw"></i> New Comment
+                            <i class="fa fa-comment fa-fw"></i> No Comment
                             <span class="pull-right text-muted small">4 minutes ago</span>
                         </div>
                     </a>
@@ -214,10 +214,9 @@
                 <li>
                     <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
-                <li class="divider"></li>
-                <li>
+                @*<li>
                     <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                </li>
+                </li>*@
             </ul>
             <!-- /.dropdown-user -->
         </li>
@@ -229,7 +228,7 @@
             <ul class="nav" id="side-menu">
                 <li class="sidebar-search">
                     <div class="input-group custom-search-form">
-                        <input type="text" class="form-control" placeholder="Search...">
+                        <input type="text" class="form-control" placeholder="comming soon">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">
                                 <i class="fa fa-search"></i>

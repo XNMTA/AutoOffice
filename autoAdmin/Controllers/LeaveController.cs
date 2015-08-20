@@ -158,30 +158,48 @@ namespace autoOffice.Controllers
             {
                 var leaveOne=db.Leaves.Find(leave.ID);
                 leaveOne.status = LeaveApproveStatus.Approved;
+                leaveOne.Comments = leaveOne.Comments + "------>[approve]";
                 db.SaveChanges();
+                updateLeavePool(leaveOne);
                 return RedirectToAction("TeamWaitingList");
             }
             return View(leave);
         }
 
-        public ActionResult Reject(Leave leave)
+        private void updateLeavePool(Leave leaveOne)
+        {
+            var name=leaveOne.EmployName;
+            var hours = leaveOne.Hours;
+            var leavePool = GetLeavePoolByName(name);
+            leavePool.Hours = leavePool.Hours - hours;
+            db.SaveChanges();
+        }
+
+        public ActionResult Reject(Leave leave, string comment)
         {
             if (ModelState.IsValid)
             {
                 var leaveOne = db.Leaves.Find(leave.ID);
                 leaveOne.status = LeaveApproveStatus.Reject;
+                leaveOne.Comments = leaveOne.Comments + "------>[reject]" + comment;
                 db.SaveChanges();
                 return RedirectToAction("TeamWaitingList");
             }
             return View(leave);
         }
 
-        protected double GetLeftHoursByUser(string username) { 
-             var query = from e in db.LeavePools
+        protected double GetLeftHoursByUser(string username) {
+            var leavepool = GetLeavePoolByName(username);
+            return leavepool.Hours;
+        }
+
+        private LeavePool GetLeavePoolByName(string username)
+        {
+            var query = from e in db.LeavePools
                         where e.EmployeeName == username
                         select e;
             var leavepool = query.FirstOrDefault();
-            return leavepool.Hours;
+            return leavepool;
         }
     }
 }
