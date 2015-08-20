@@ -18,7 +18,11 @@ namespace autoOffice.Controllers
 
         public ActionResult Index()
         {
+            String username=CommonUser.pureName(User.Identity.Name);
+            ViewBag.Hours = GetLeftHoursByUser(username);
+            ViewBag.UserName = username;
             return View(db.Leaves.ToList());
+
         }
 
         //
@@ -170,6 +174,14 @@ namespace autoOffice.Controllers
                 return RedirectToAction("TeamWaitingList");
             }
             return View(leave);
+        }
+
+        protected double GetLeftHoursByUser(string username) { 
+             var query = from e in db.LeavePools
+                        where e.EmployeeName == username
+                        select e;
+            var leavepool = query.FirstOrDefault();
+            return leavepool.Hours;
         }
     }
 }

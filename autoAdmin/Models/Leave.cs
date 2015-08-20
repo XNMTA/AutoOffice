@@ -26,5 +26,7 @@ namespace autoOffice.Models
         public LeaveApproveStatus status { get; set; }
         [MaxLength(50)]
         public string Approver { get; set; }
+        [MaxLength(500)]
+        public string ApproveComment { get; set; }
     }
 }

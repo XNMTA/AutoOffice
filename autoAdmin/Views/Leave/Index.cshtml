@@ -4,6 +4,18 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script type="text/javascript">
+    function showhideall() {
+        if ($("#div-all-leaves").css("display") == "none") {
+            $("#a-show-all-leaves").find("button").first().text("Hide-All");
+            $("#div-all-leaves").css("display", "block");
+        }
+        else {
+            $("#a-show-all-leaves").find("button").first().text("Show-All");
+            $("#div-all-leaves").css("display", "none");
+        }
+    }
+</script>
 
 <div class="row">
     <div class="col-lg-12">
@@ -16,14 +28,17 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                use this page request new leave application for yourself
+               <span >@ViewBag.userName you have</span> <span style="color:green; font-size:large">@ViewBag.Hours</span> <span> hours left</span>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <p>
-                    @Html.ActionLink("Create New", "Create")
+                    <a href="/autoAdmin/Leave/Create">
+                        <button type="button" class="btn btn-primary" href="/autoAdmin/Leave/Create">Create</button>
+                    </a>
+                     | <a id="a-show-all-leaves" onclick="showhideall()"><button type="button" class="btn btn-info" href="/autoAdmin/Leave/Create">Show-All</button></a>
                 </p>
-                <div class="dataTable_wrapper">
+                <div class="dataTable_wrapper" id="div-all-leaves" style="display:none">
 
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>

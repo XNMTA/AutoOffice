@@ -41,9 +41,13 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Approver)
                                 </th>
+                                
                                 <th>
                                     Status
                                 </th>
+                                @*<th>
+                                    Approve Commonts
+                                </th>*@
                                 <th>Operations</th>
                             </tr>
                         </thead>
@@ -66,10 +70,14 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Approver)
                                     </td>
+                                    
                                     <td>
                                         @*@if (item.status == 0) { Html.DisplayText("aaaaa"); } else { Html.Display("bbb"); }*@
                                         <img src="~/Images/approve/@item.status-status.gif" alt="" />
                                     </td>
+                                    @*<td>
+                                        <input type="text" class="form-control" placeholder="can be empty" id="ApproveComment" name="ApproveComment" data-valmsg-for="ApproveComment" data-val="true" />
+                                    </td>*@
                                     <td>
                                         @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                                         @Html.ActionLink("Details", "Details", new { id = item.ID }) |
